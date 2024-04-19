@@ -26,6 +26,12 @@ struct CarNode
 };
 
 
-class ProvinceMap {
+class CarHash {
+    int buckets;
+    int* BrandLibrary;
+public:
+    CarHash() {};
 
+    void insert() {};
+    void rehash() {};
 };
