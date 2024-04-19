@@ -16,134 +16,82 @@ int main() {
     line = "";
     while(getline(carFile, line))
     {
-        CarNode* newCar = new CarNode;
-
-        int index;
         int price;
         string currency;
         bool used = false;
         string brand;
         string model;
-        string version;
-        string generation;
         int year;
-        int mileage;
-        int horsepower;
-        int displacement;
-        string fuel_type;
-        int emissions;
-        string drive;
-        bool manual = false;
         string type;
-        int num_doors;
         string color;
-        string country;
-        bool first_owner = false;
-        string register_date;
-        string offer_date;
-        string location;
-        string features;
-        //vector<string> features;
 
         string temp = "";
+        string skip = "";
         stringstream inputString(line);
 
-        getline(inputString, temp, ',');
-        index = atoi(temp.c_str());
-        newCar->index = index;
-        temp = "";
+        getline(inputString, skip, ','); // skip index
+
         getline(inputString, temp, ',');
         price = atoi(temp.c_str());
         temp = "";
-        newCar->price = price;
         getline(inputString, currency, ',');
-        newCar->currency = currency;
+        //newCar->currency = currency;
         getline(inputString, temp, ',');
         if(temp == "Used")
         {
             used = true;
         }
-        newCar->used = used;
         temp = "";
         getline(inputString, brand, ',');
-        newCar->brand = brand;
         getline(inputString, model, ',');
-        newCar->model = model;
-        getline(inputString, version, ',');
-        newCar->version = version;
-        getline(inputString, generation, ',');
-        newCar->generation = generation;
+
+        getline(inputString, skip, ','); // skip version
+        getline(inputString, skip, ','); // skip generation
+
         getline(inputString, temp, ',');
         year = atoi(temp.c_str());
-        newCar->year = year;
         temp = "";
-        getline(inputString, temp, ',');
-        mileage = atoi(temp.c_str());
-        newCar->mileage = mileage;
-        temp = "";
-        getline(inputString, temp, ',');
-        horsepower = atoi(temp.c_str());
-        newCar->horsepower = horsepower;
-        temp = "";
-        getline(inputString, temp, ',');
-        displacement = atoi(temp.c_str());
-        newCar->displacement = displacement;
-        temp = "";
-        getline(inputString, fuel_type, ',');
-        newCar->fuel_type = fuel_type;
-        getline(inputString, temp, ',');
-        emissions = atoi(temp.c_str());
-        newCar->emissions = emissions;
-        temp = "";
-        getline(inputString, drive, ',');
-        newCar->drive = drive;
-        getline(inputString, temp, ',');
-        if(temp == "Manual")
-        {
-            manual = true;
-        }
-        newCar->manual = manual;
-        temp = "";
+
+        getline(inputString, skip, ','); // skip mileage
+        getline(inputString, skip, ','); // skip horsepower
+        getline(inputString, skip, ','); //skip displacement
+        getline(inputString, skip, ','); // skip fuel type
+        getline(inputString, skip, ','); // skip emissions
+        getline(inputString, skip, ','); // skip drive
+        getline(inputString, skip, ','); // skip manual
+
+
         getline(inputString, type, ',');
-        newCar->type = type;
-        getline(inputString, temp, ',');
-        num_doors = atoi(temp.c_str());
-        newCar->num_doors = num_doors;
-        temp = "";
+
+        getline(inputString, skip, ','); // skip num doors
+
         getline(inputString, color, ',');
-        newCar->color = color;
-        getline(inputString, country, ',');
-        newCar->country = country;
-        getline(inputString, temp, ',');
-        if(temp == "Yes")
-        {
-            first_owner = true;
-        }
-        newCar->first_owner = first_owner;
-        temp = "";
-        getline(inputString, register_date, ',');
-        newCar->register_date = register_date;
-        getline(inputString, offer_date, ',');
-        newCar->offer_date = offer_date;
-        getline(inputString, location, '[');
-        newCar->location = location;
-        getline(inputString, features, ']');
-        newCar->features = features;
+
+        getline(inputString, skip, ','); // skip country
+        getline(inputString, skip, ','); // skip first owner
+
+        getline(inputString, skip, ','); // skip register date
+        getline(inputString, skip, ','); // skip offer date
+        getline(inputString, skip, '['); // skip location
+        getline(inputString, skip, ']'); // skip features
 
         line = "";
 
+        CarNode* newCar = new CarNode(price, currency, used, brand, model, year, type, color);
         cars.push_back(newCar);
     }
 
 
     // print out some of the features!
-    auto test = cars[9];
-    cout << "index: " << test->index << endl;
+    auto test = cars[75760];
     cout << "price: " << test->price << endl;
-    cout << "location: " << test->location << endl;
-    cout << "features: " <<test->features << endl;
-
-
+    cout << "currency: " << test->currency << endl;
+    cout << "used: " << test->used << endl;
+    cout << "brand: " << test->brand << endl;
+    cout << "model: " << test->model << endl;
+    cout << "year: " << test->year << endl;
+    cout << "type: " << test->type << endl;
+    cout << "color: " << test->color << endl;
 
     return 0;
 }

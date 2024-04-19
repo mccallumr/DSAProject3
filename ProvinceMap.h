@@ -1,34 +1,28 @@
 #include <vector>
+#include <string>
 using namespace std;
 
 struct CarNode
 {
-    int index;
     int price;
     string currency;
     bool used;
     string brand;
     string model;
-    string version;
-    string generation;
     int year;
-    int mileage;
-    int horsepower;
-    int displacement;
-    string fuel_type;
-    int emissions;
-    string drive;
-    bool manual;
     string type;
-    int num_doors;
     string color;
-    string country;
-    bool first_owner;
-    string register_date;
-    string offer_date;
-    string location;
-    string features;
-    //vector<string> features;
+    CarNode(int price, string currency, bool used, string brand, string model, int year, string type, string color)
+    {
+        this->price = price;
+        this->currency = currency;
+        this->used = used;
+        this->brand = brand;
+        this->model = model;
+        this->year = year;
+        this->type = type;
+        this->color = color;
+    }
 };
 
 
