@@ -1,3 +1,5 @@
+The files in use for this project are "csvpy.cpp", "new.csv", "csv.py", "compile.sh"
+
 In order to run:
 
 1. install pip and anaconda
